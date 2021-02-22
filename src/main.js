@@ -3,13 +3,19 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-
+import ElementUI from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';
 Vue.config.productionTip = false
-
+Vue.use(ElementUI);
 /* eslint-disable no-new */
 new Vue({
+  //查找 index.html 中 id 为 app 的元素
   el: '#app',
+  // 配置路由
   router,
-  components: { App },
-  template: '<App/>'
+  //引入组件，使用的是 import App from './App' 定义的 App 组件;
+  components: {App},
+  //模板，会将 index.html 中替换
+  template: '<App/>',
+  render: h => h(App)
 })

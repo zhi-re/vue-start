@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.js"></script>
+
+</head>
+<body>
+<div id="app"> <!-- v-bind:value只能进行单向的数据渲染 -->
+  <input type="text" v-bind:value="searchMap.keyWord">
+  <!-- v-model 可以进行双向的数据绑定 -->
+  <input type="text" v-model="searchMap.keyWord">
+  <p>您要查询的是：{{searchMap.keyWord}}</p>
+</div>
+<script> new Vue({
+  el: '#app',
+  data: {
+    searchMap: {
+      keyWord: 'hello'
+    }
+  }
+}) </script>
+</body>
+</html>

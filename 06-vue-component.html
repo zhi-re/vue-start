@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.js"></script>
+</head>
+<body>
+<!--
+Vue.component()：注册组件
+my-component-li：自定义组件的名字
+template：组件的模板
+-->
+<div id="app">
+  <ul>
+    <!-- 有点类似自定义标签 -->
+    <my-component-li></my-component-li>
+  </ul>
+</div>
+<script>
+  // 先注册组件
+  Vue.component('my-component-li', {
+    template:
+      '<li>Hello li</li>'
+  });
+  // 再实例化Vue
+  var vm = new Vue(
+    {
+      el: '#app'
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.js"></script>
+</head>
+<body>
+
+<div id="app">
+  <li v-for="item in items"> {{ item}}</li>
+</div>
+
+<div id="app2">
+  <li v-for="item in items"> {{ item.message}}</li>
+</div>
+
+<script>
+  new Vue({
+    el: "#app",
+    data: {
+      items: [
+        {name: 'cq', sex: "boy", age: 11},
+        {name: 'cq2', sex: "boy2", age: 112}]
+    }
+  });
+  new Vue({
+    el: "#app2",
+    data: {
+      items: [{message: 'hello'}, {message: 'hello2'}]
+    }
+  })
+</script>
+
+</body>
+</html>

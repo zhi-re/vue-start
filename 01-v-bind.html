@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.js"></script>
+</head>
+<body>
+
+
+<div id="app">
+  <!--如果要将模型数据绑定在html属性中 则使用 v-bind 指令,此时title中显示的是模型数据 -->
+  <h1 v-bind:title="message">
+    鼠标悬停几秒钟查看此处动态绑定的提示信息！
+  </h1>
+  <!-- v-bind 指令的简写形式： 冒号（:） -->
+  <h1 :title="message">我是标题</h1>
+</div>
+
+<script>
+  new Vue({
+    el: '#app',
+    data: {message: 'page load on ' + new Date().toLocaleString()}
+  })
+</script>
+
+</body>
+</html>
