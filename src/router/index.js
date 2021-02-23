@@ -4,6 +4,9 @@ import HelloWorld from '@/components/HelloWorld'
 import Content from '../components/Content'
 import Main from '../components/Main'
 import NotFound from '../components/NotFound'
+import Select from '../components/Select'
+import Menu from '../components/Menu'
+import Api from '../components/Api'
 Vue.use(Router)
 
 export default new Router({
@@ -16,7 +19,7 @@ export default new Router({
       path: '/',
       // name: 'HelloWorld',
       // component: HelloWorld
-      redirect: '/content'
+      redirect: '/menu'
     },
     {
       // 路由路径
@@ -33,6 +36,30 @@ export default new Router({
       name: 'main',
       // 跳转到组件
       component: Main
+    },
+    {
+      // 路由路径
+      path: '/select',
+      // 路由名称
+      name: 'select',
+      // 跳转到组件
+      component: Select
+    },
+    {
+      // 路由路径
+      path: '/menu',
+      // 路由名称
+      name: 'menu',
+      // 跳转到组件
+      component: Menu
+    },
+    {
+      // 路由路径
+      path: '/api',
+      // 路由名称
+      name: 'api',
+      // 跳转到组件
+      component: Api
     },
     {
       path: '*',

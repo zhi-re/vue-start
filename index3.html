@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://cdn.staticfile.org/vue/2.4.2/vue.min.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>vue-start</title>
+  </head>
+  <body>
+    <!--<div id="app"></div>-->
+
+    <div id="vue_det">
+      <h1>site : {{site}}</h1>
+      <h1>url : {{url}}</h1>
+      <!--<h1>{{details()}}</h1>-->
+      <h1>Alexa : {{alexa}}</h1>
+    </div>
+
+    <script type="text/javascript">
+      var data = {site:"炙热", url : "zhi.re" , alexa: 10000}
+      var vm = new Vue({
+        el: '#vue_det',
+        // data: {
+        //   site: "chenqi",
+        //   url: "zhi.re",
+        //   alexa: "10000"
+        // },
+        data: data
+        // methods: {
+        //   details: function() {
+        //     return  this.site + " 嗯嗯！";
+        //   }
+        // }
+      })
+      document.write(vm.site === data.site) // true
+      document.write("<br>")
+      // 设置属性也会影响到原始数据
+      vm.site = "zhire"
+      document.write(data.site + "<br>") // zhire
+      // 前缀 $，以便与用户定义的属性区分开来。
+      document.write(vm.$data === data) // true
+      document.write("<br>")
+      document.write(vm.$el === document.getElementById('vue_det')) // true
+    </script>
+  </body>
+</html>
