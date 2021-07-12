@@ -1,10 +1,23 @@
 {
-  "name": "blog",
-  "url": "https://zhi.re",
-  "page": 1,
-  "address": {
-    "street": "China",
-    "city": "BeiJing",
-    "country": "ChaoYang"
-  }
+  "flag": 1,
+  "data": [
+    {
+      "user_id": 51064593,
+      "job_id": 2065113,
+      "job_title": "java中高级开发工程师",
+      "job_ordertime": "20210608162046",
+      "comp_name": "ccasdfC",
+      "job_salary": "24-36万",
+      "user_comp_id": 20048171
+    },
+    {
+      "user_id": 51067967,
+      "job_id": 3201009,
+      "job_title": "fadfasf",
+      "job_ordertime": "20210608203501",
+      "comp_name": "fasdfsa",
+      "job_salary": "14-21万",
+      "user_comp_id": 0
+    }
+  ]
 }

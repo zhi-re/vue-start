@@ -13,16 +13,6 @@
 </head>
 <body>
 <div id="vue" v-cloak>
-  {{info}}
-  <div>名称：{{info.flag}}</div>
-  <div>地址：{{info.data.user_id}}-{{info.data.job_id}}- {{info.data.job_title}}</div>
-  <div>链接：<a v-bind:href="info.url" target="_blank">{{info.data.user_comp_id}}</a></div>
-
-  <li v-for="item in info.data">
-    用户ID：{{item.user_id}}
-    职位ID：{{item.job_id}}
-    职位名称：{{item.job_title}}
-  </li>
 
 </div>
 
@@ -34,15 +24,9 @@
         info:
           {
             flag: null,
-            data:[
+            data: [
               {
-                user_id: null,
-                job_id: null,
-                job_title: null,
-                job_ordertime: null,
-                comp_name: null,
-                job_salary: null,
-                user_comp_id: null,
+                user_id: 1111
               }
             ]
 
@@ -51,7 +35,12 @@
     },
     mounted() {
       //钩子函数
-      axios.get('data.json').then(response => (this.info = response.data));
+      $http.get(axios.get('http://127.0.0.1:8081/user/dojob', {
+        params: {
+          name: 'chenqi'
+        }
+      })
+        .then(response => (this.info = response.data)))
     }
   });
 </script>
