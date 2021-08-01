@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    h2 {
+      color: blue;
+    }
+
+    .p1 {
+      font-size: 20px;
+    }
+
+    #p2 {
+      color: pink;
+    }
+
+    p {
+      font-family: times, Verdana, "隶书";
+      font-size: 24px;
+    }
+
+    span {
+      /*font-size: 40px;*/
+      font: oblique bold 30px "楷体";
+    }
+
+    a {
+      color: green;
+    }
+
+    a:hover {
+      color: #000;
+    }
+
+    li {
+      list-style: none;
+      font-size: 18px;
+      font-weight: bold;
+      color: #FFF;
+      text-indent: 1em;
+      line-height: 35px;
+      background: #CC0000 url("logo.png") 205px 10px no-repeat;
+    }
+
+  </style>
+  <link href="./css/style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<!--行内样式-->
+<h1 style="color:red;">style属性的应用</h1>
+<p style="font-size:14px; color:green;">直接在HTML标签中设置的样式</p>
+<!--内部-->
+<h2>hello</h2>
+<!--外部-->
+<h3>lclc.lc</h3>
+<h4 style="color: black">cq</h4>
+<p style="color: green;font-size: 14px">
+  cq cq cq cq<br>
+  cq cq cq cq<br>
+  cq cq cq cq<br>
+  cq cq cq cq<br>
+</p>
+<!--类选择器-->
+<p class="p1">p1p1p1</p>
+<!--ID选择器-->
+<!--ID选择器>类选择器>标签选择器-->
+<p id="p2">p2p2p2</p>
+
+<p>好好学习，<span>天天向上</span></p>
+<br>
+<a href="https://6.srl">6.srl</a>
+<ul>
+  <li>cq cq cq</li>
+  <li>cq cq cq</li>
+  <li>cq cq cq</li>
+</ul>
+
+</body>
+</html>

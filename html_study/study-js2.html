@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script>
+    console.log(window.innerWidth)
+    console.log(window.innerHeight)
+
+    console.log('appName = ' + navigator.appName);
+    console.log('appVersion = ' + navigator.appVersion);
+    console.log('language = ' + navigator.language);
+    console.log('platform = ' + navigator.platform);
+    console.log('userAgent = ' + navigator.userAgent);
+    console.log('Screen size = ' + screen.width + ' x ' + screen.height);
+
+    //  location 对象表示当前页面的URL信息。例如，一个完整的URL：
+    // http://www.example.com:8080/path/index.html?a=1&b=2#TOP
+    location.protocol; // 'http'
+    location.host; // 'www.example.com'
+    location.port; // '8080'
+    location.pathname; // '/path/index.html'
+    location.search; // '?a=1&b=2'
+    location.hash; // 'TOP'
+    // 要加载一个新页面，可以调用 location.assign() 。如果要重新加载当前页面，调用
+    // location.reload() 方法非常方便。
+    // location.reload();
+    // location.assign('https://6.srl/'); // 设置一个新的URL地址
+
+  </script>
+</head>
+<body>
+
+<dl id="code-menu" style="border:solid 1px #ccc;padding:6px;">
+  <dt>Java</dt>
+  <dd>Spring</dd>
+  <dt>Python</dt>
+  <dd>Django</dd>
+  <dt>Linux</dt>
+  <dd>Docker</dd>
+</dl>
+
+<p id="p1">
+  <span style="color: #CC0000">chenqi</span>
+</p>
+
+<p id="p2">
+  <span style="color: green">chenqi</span>
+</p>
+
+<p id="js">JavaScript</p>
+<div id="list">
+  <p id="java">Java</p>
+  <p id="python">Python</p>
+  <p id="scheme">Scheme</p>
+</div>
+
+
+<div id="parent">
+  <p>First</p>
+  <p>Second</p>
+  <p id="rem">Third</p>
+</div>
+
+<SCRIPT>
+
+  var menu = document.getElementById('code-menu');
+  var drinks = document.getElementsByTagName('dt');
+
+  var i, s;
+  s = '提供的饮料有:';
+  // innerHTML 属性设置或返回表格行的开始和结束标签之间的 HTML。
+  for (i = 0; i < drinks.length; i++) {
+    s = s + drinks[i].innerHTML + ',';
+  }
+  console.log(s);
+  console.log("cookie:" + document.cookie)
+
+  // 更新DOM
+  document.getElementById('p1').innerHTML = ' <span style="color: #CC0000">chenqiqi</span>';
+
+  let p2Id = document.getElementById('p2');
+  p2Id.style.color = "#CC0000";
+  p2Id.style.fontSize = "24px";
+
+  // 插入DOM
+  var js = document.getElementById('js'),
+    list = document.getElementById('list');
+  list.appendChild(js);
+
+  var list2 = document.getElementById('list'),
+    haskell = document.createElement('p');
+  haskell.id = 'haskell';
+  haskell.innerText = 'cq';
+  list2.appendChild(haskell);
+
+  var d = document.createElement('style');
+  d.setAttribute('type', 'text/css');
+  d.innerHTML = 'p { color: red }'; //head 头部标签
+  document.getElementsByTagName('head')[0].appendChild(d);
+
+  var list = document.getElementById('list'),
+    ref = document.getElementById('python'),
+    haskell = document.createElement('p');
+  haskell.id = 'haskell';
+  haskell.innerText = 'cccccccc';
+  list.insertBefore(haskell, ref);
+
+  // 删除DOM
+  var del = document.getElementById('parent')
+  var rem = document.getElementById('rem')
+  del.removeChild(rem)
+
+
+
+</SCRIPT>
+</body>
+</html>

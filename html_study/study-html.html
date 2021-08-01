@@ -114,11 +114,58 @@
 <hr>
 <table border="1px">
   <tr><!--colspan 所跨的列数-->
-    <td colspan="n">单元格内容</td>
+    <td colspan="2">单元格内容</td>
   </tr>
   <tr>
     <td>单元格内容</td>
+    <td>单元格内容</td>
   </tr>
 </table>
+
+<br>
+
+<table border="1">
+  <tr><!--rowspan 所跨的行数-->
+    <td rowspan="2">&nbsp;666</td>
+    <td>&nbsp;7777777</td>
+  </tr>
+  <tr>
+    <td>&nbsp;88888</td>
+  </tr>
+</table>
+<br>
+<table border="1">
+  <tr>
+    <td colspan="3">student score</td>
+  </tr>
+  <tr>
+    <td rowspan="2">zs</td>
+    <td>yw</td>
+    <td>88</td>
+  </tr>
+  <tr>
+    <td>ss</td>
+    <td>88</td>
+  </tr>
+  <tr>
+    <td rowspan="2">10</td>
+    <td>yy</td>
+    <td>12</td>
+  </tr>
+  <tr>
+    <td>ss</td>
+    <td>14</td>
+  </tr>
+</table>
+<br>
+<!-- src：指定要播放的视频文件的路径 controls：提供播放、暂停和音量的控件 autoplay：自动播放属性 loop：视频的循环播放-->
+<video src="视频路径" controls autoplay></video>
+<br>
+<!--src：指定要播放的音频文件的路径 trols：提供播放、暂停和音量的控件 -->
+<audio src="音频路径" controls autoplay></audio>
+<br>
+<!--<iframe src="path" name="mainFrame" ></iframe>-->
+<iframe name="mainFrame"></iframe>
+<a href="https://www.baidu.com/" target="mainFrame">加载</a>
 </body>
 </html>

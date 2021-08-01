@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<form method="post" action="result.html">
+  <p>名字：<input name="name" type="text"></p>
+  <p>密码：<input name="pass" type="password"></p>
+  <p><input type="submit" name="Button" value="提交"/>
+    <input type="reset" name="Reset" value="重填"/>
+  </p>
+</form>
+
+<!--type="text" name：文本框名称(必填) value：文本框初始值 size：文本框长度 maxlength：文本框可输入最多字符 -->
+<input type="text" name="userName"
+       value="用户名" size="30"
+       maxlength="20"/><br>
+<!--隐藏-->
+<input type="hidden" value="666" name="userid"><br>
+<!--只读、禁用-->
+<input name="name" type="text" value="张三" readonly><br>
+<input type="submit" disabled value="保存"><br>
+<!--自动将焦点转移到与该标注相关的表单元素上 它的for属性对应的id与表单元素id一致-->
+<label for="id">标注的文本</label> <br>
+<input type="radio" name="gender" id="male"/>
+<!--type="password" name：密码框名称(必填) size：密码框长度 -->
+<input type="password" name="pass" size="20"/><br>
+<!--type="radio" name：单选框名称(必填)，一组的名称需要相同 checked：单选按钮选中状态 value：单选框的值 -->
+<input name="gen" type="radio" value="男" checked/>男
+<input name="gen" type="radio" value="女"/>女
+<br>
+
+<!--type="checkbox" name：复选框名称(必填)，一组的名称需要相同 checked：复选按钮选中状态 value：复选框的值 -->
+<input type="checkbox" name="interest" value="sports"/>运动
+<input type="checkbox" name="interest" value="talk" checked/>聊天
+<input type="checkbox" name="interest" value="play"/>玩游戏
+<br>
+<!--select:下拉列表框--> <!--option：选项-->
+<select name="列表名称" size="行数">
+  <option value="选项的值" selected="selected">…</option>
+  <option value="选项的值">…</option>
+</select>
+<br>
+<!--重置按钮-->
+<input type="reset" name="butReset" value="reset按钮"> <br>
+<!--提交按钮-->
+<input type="submit" name="butSubmit" value="submit按钮"> <br>
+<!--普通按钮-->
+<input type="button" name="butButton" value="button按钮"/> <br>
+<!--图片按钮-->
+<input type="image" src="https://pic.banli.co/images/2021/07/11/3951157376.jpg" width="250" height="80"/><br>
+<!--textarea：多行文本域 cols：显示的列数 rows：显示的行数-->
+<textarea name="showText" cols="x" rows="y">文本内容 </textarea><br>
+<!--file-->
+<form action="" method="post" enctype="multipart/form-data"><p>
+  <!--type="file" 文件域--> <input type="file" name="files"/>
+  <input type="submit" name="upload" value="上传"/></p></form>
+<br>
+邮箱:<input type="email" name="email"/><br>
+请输入你的网址:<input type="url" name="userUrl"/><br>
+请输入数字:<input type="number" name="num" min="0" max="100" step="10"/><br>
+请输入数字:<input type="range" name="range1" min="0" max="10" step="2"/><br>
+请输入搜索的关键词:<input type="search" name="sousuo"/><br>
+<!--placeholder提示语默认显示，当文本框中输入内容时提示语消失-->
+<input type="search" name="sousuo" placeholder="请输入要搜索的关键字"/><br>
+<!--required规定文本框填写内容不能为空，否则不允许用户提交表单-->
+<input type="text" name="username" required/><br>
+<!--pattern用户输入的内容必须符合正则表达式所指的规则，否则就不能提交表单-->
+<input type="text" name="tel" required pattern="^1[358]\d{9}" /><br>
+<hr>
+<img src="https://pic.zhi.re/images/2021/07/11/3951157376.jpg" width="250" height="80">
+<p>zhi.re is a very <strong>nice</strong> and <strong>fun</strong> blog!</p>
+<form>
+  email:<input type="email" name="email"/><br>
+  pass:<input type="password" name="pass"/><br>
+  name:<input type="text" name="name"/><br>
+  sex:<input name="gen" type="radio" value="男" checked/>男
+  <input name="gen" type="radio" value="女"/>女<br>
+  birthday:<!--select:下拉列表框--> <!--option：选项-->
+  year:<select name="year" size="year">
+  <option value="999" selected="selected">999</option>
+  <option value="1000">1000</option>
+  <option value="1001">1001</option>
+</select>
+  mon:<select name="mon" size="mon">
+  <option value="999" selected="selected">999</option>
+  <option value="1000">1000</option>
+  <option value="1001">1001</option>
+</select>
+  day:<select name="day" size="day">
+  <option value="999" selected="selected">999</option>
+  <option value="1000">1000</option>
+  <option value="1001">1001</option>
+</select>
+  <br>
+  auth:<input type="text" name="auth"><br>
+  <input type="submit" name="Button" value="提交"/>
+</form>
+
+</body>
+</html>

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+
+  <style> #testMouseMoveDiv {
+    width: 300px;
+    height: 300px;
+    border: 1px solid black;
+  } </style>
+
+  <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+  <script>
+    /**
+     * 初始化事件
+     我们自己的初始化代码必须放到 document 对象的 ready 事件中，保证DOM已完成初始化
+     */
+    $(document).on('ready', function () {
+      $('#testForm').on('submit', function () {
+        alert('submit!');
+      });
+    });
+    /**
+     * 这样写就没有问题了。因为相关代码会在DOM树初始化后再执行。
+     由于 ready 事件使用非常普遍，所以可以这样简化：
+     */
+    $(document).ready(function () {
+      $('#testForm').submit(function () {
+        alert('submit!');
+      });
+    });
+    // 甚至还可以再简化为：
+    $(function () { // init...
+    });
+
+
+  </script>
+</head>
+<body>
+
+mousemove: <span id="testMouseMoveSpan"></span>
+<div id="testMouseMoveDiv"> 在此区域移动鼠标试试</div>
+
+<form id="testForm"> ...</form>
+
+<a id="test-link" href="#0">点我试试</a>
+
+<p> hello </p>
+
+<div class="red">red</div>
+
+<ul id="test-ul">
+  <li class="js">JavaScript</li>
+  <li name="book">Java &amp; JavaScript</li>
+</ul>
+
+<ul id="test-css">
+  <li class="lang dy"><span>JavaScript</span></li>
+  <li class="lang"><span>Java</span></li>
+  <li class="lang dy"><span>Python</span></li>
+  <li class="lang"><span>Swift</span></li>
+  <li class="lang dy"><span>Scheme</span></li>
+</ul>
+
+<input id="test-input" name="email" value=""> <select id="test-select" name="city">
+  <option value="BJ" selected>Beijing</option>
+  <option value="SH">Shanghai</option>
+  <option value="SZ">Shenzhen</option>
+</select> <textarea id="test-textarea">Hello</textarea>
+
+<div id="test-div">
+  <ul>
+    <li><span>JavaScript</span></li>
+    <li><span>Python</span></li>
+    <li><span>Swift</span></li>
+  </ul>
+</div>
+
+</body>
+<script>
+  // 按ID查找如果某个DOM节点有 id 属性，利用jQuery查找如下：
+  let a = $('#test-link');
+  a.on('click', function () {
+    //alert("hello!")
+  })
+  a.click(function () {
+    // alert('Hello!');
+  });
+  // 按tag查找只需要写上tag名称就可以了：
+  let p1 = $('p');
+  // alert(p1.length)
+  // 按class查找注意在class名称前加一个 . ：
+  var aa = $('.red'); // 所有节点包含`class="red"`都将返回
+  console.log(aa)
+
+  // 按属性查找一个DOM节点除了 id 和 class 外还可以有很多属性，很多时候按属性查找会非常方便，比如在一个表单中按属性来查找：
+  var email = $('[name=email]'); // 找出<??? name="email">
+  var passwordInput = $('[type=password]'); // 找出<??? type="password">
+  var aaa = $('[items="A B"]'); // 找出<??? items="A B">
+  // 当属性的值包含空格等特殊字符时，需要用双引号括起来。
+  // 按属性查找还可以使用前缀查找或者后缀查找：
+  var icons = $('[name^=icon]'); // 找出所有name属性值以icon开头的DOM
+  // 例如: name="icon-1", name="icon-2"
+  var names = $('[name$=with]'); // 找出所有name属性值以with结尾的DOM
+  // 例如: name="startswith", name="endswith"
+
+  // 分别获取文本和HTML：
+  $('#test-ul li[name=book]').text(); // 'Java & JavaScript'
+  $('#test-ul li[name=book]').html(); // 'Java &amp; JavaScript'
+
+  // 如何设置文本或HTML？jQuery的API设计非常巧妙：无参数调用 text() 是获取文本，传入参数就变成设置文本，HTML也是类似操作，自己动手试试：
+  var j1 = $('#test-ul li.js');
+  var j2 = $('#test-ul li[name=book]');
+  j1.html('<span style="color: red">JavaScript</span>');
+  j2.text('JavaScript & ECMAScript');
+
+  // 一个jQuery对象可以包含0个或任意个DOM对象，它的方法实际上会作用在对应的每个DOM节点上。在上面的例子中试试
+  $('#test-ul li').text('JS'); // 是不是两个节点都变成了JS？
+
+  // 要高亮显示动态语言，调用jQuery对象的 css('name', 'value') 方法，我们用一行语句实现：
+  $('#test-css li.dy>span').css('background-color', '#ffd351').css('color', 'red');
+
+  // jQuery对象的 css() 方法可以这么用：
+  var div = $('#test-div');
+  div.css('color'); // '#000033', 获取CSS属性
+
+  // css() 方法将作用于DOM节点的 style 属性，具有最高优先级。如果要修改 class 属性，可以用jQuery提供的下列方法：
+  var div = $('#test-div');
+  div.hasClass('highlight'); // false， class是否包含highlight
+  div.addClass('highlight'); // 添加highlight这个class
+  div.removeClass('highlight'); // 删除highlight这个class
+
+  /**
+   * 要隐藏一个DOM，我们可以设置CSS的 display 属性为 none ，利用 css() 方法就可以实现。
+   不过，要显示这个DOM就需要恢复原有的 display 属性，这就得先记下来原有的 display 属性到
+   底是 block 还是 inline 还是别的值。
+   考虑到显示和隐藏DOM元素使用非常普遍，jQuery直接提供 show() 和 hide() 方法，我们不用关
+   心它是如何修改 display 属性的，总之它能正常工作：
+   * @type {*|jQuery|HTMLElement}
+   */
+  var sh = $('a[target=_blank]');
+  sh.hide(); // 隐藏
+  sh.show(); // 显示
+
+  // 获取DOM信息
+  $(window).width(); // 800
+  $(window).height(); // 600
+  // HTML文档大小:
+  $(document).width(); // 800
+  $(document).height(); // 3500 // 某个div的大小:
+  var div = $('#test-div');
+  div.width(); // 600
+  div.height(); // 300
+  div.width(400); // 设置CSS属性 width: 400px，是否生效要看CSS是否有效
+  div.height('200px'); // 设置CSS属性 height: 200px，是否生效要看CSS是否有效
+
+  // attr() 和 removeAttr() 方法用于操作DOM节点的属性：
+  // <div id="test-div" name="Test" start="1">...</div>
+  var div = $('#test-div');
+  div.attr('data'); // undefined, 属性不存在
+  div.attr('name'); // 'Test'
+  div.attr('name', 'Hello'); // div的name属性变为'Hello'
+  div.removeAttr('name'); // 删除name属性
+  div.attr('name'); // undefined
+
+  // 表单 可见，一个 val() 就统一了各种输入框的取值和赋值的问题。
+  var
+    input = $('#test-input'),
+    select = $('#test-select'),
+    textarea = $('#test-textarea');
+  input.val(); // 'test'
+  input.val('abc@example.com'); // 文本框的内容已变为abc@example.com
+  select.val(); // 'BJ'
+  select.val('SH'); // 选择框已变为Shanghai
+  textarea.val(); // 'Hello'
+  textarea.val('Hi'); // 文本区域已更新为'Hi'
+
+  // 添加DOM
+  // 要添加新的DOM节点，除了通过jQuery的 html() 这种暴力方法外，还可以用 append() 方法，
+  var ul = $('#test-div>ul');
+  ul.append('<li><span>Haskell</span></li>');
+  // append() 把DOM添加到最后， prepend() 则把DOM添加到最前。
+  // 如果要把新节点插入到指定位置，例如，JavaScript和Python之间，那么，可以先定位到JavaScript，然
+  // 后用 after() 方法：
+  var js = $('#test-div>ul>li:first-child');
+  js.after('<li><span>Lua</span></li>');
+  // 也就是说，同级节点可以用 after() 或者 before() 方法。
+
+  // 要删除DOM节点，拿到jQuery对象后直接调用 remove() 方法就可以了。如果jQuery对象包含若干
+  // DOM节点，实际上可以一次删除多个DOM节点：
+  var li = $('#test-div>ul>li');
+  li.remove(); // 所有<li>全被删除
+
+  // 事件
+  /*
+  jQuery能够绑定的事件主要包括：
+鼠标事件
+click: 鼠标单击时触发； dblclick：鼠标双击时触发； mouseenter：鼠标进入时触发； mouseleave：
+鼠标移出时触发； mousemove：鼠标在DOM内部移动时触发； hover：鼠标进入和退出时触发两个函
+数，相当于mouseenter加上mouseleave。
+键盘事件
+键盘事件仅作用在当前焦点的DOM上，通常是 和 。 keydown：键盘按下时触发； keyup：键盘松开时触发； keypress：按一次键后触发。
+其他事件
+focus：当DOM获得焦点时触发； blur：当DOM失去焦点时触发； change：当 、 或 的内容改变时 触发； submit：当 提交时触发；
+ ready：当页面被载入并且DOM树完成初始化后触发。
+   */
+
+  $(function () {
+    $('#testMouseMoveDiv').mousemove(function (e) {
+      $('#testMouseMoveSpan').text('pageX = ' + e.pageX + ', pageY = ' + e.pageY);
+    });
+  });
+</script>
+</html>
