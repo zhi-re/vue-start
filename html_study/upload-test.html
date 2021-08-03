@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<label for="one"></label><input type="text" size="2" id="one">
+<label>
+  <select id="operate">
+    <option value="+" selected="selected">+</option>
+    <option value="-">-</option>
+    <option value="*">*</option>
+    <option value="/">/</option>
+  </select>
+</label>
+<label for="two"></label><input type="text" size="2" id="two">
+<button type="button" onclick="submit()">=</button>
+<label for="sum"></label><input type="text" size="2" id="sum" value="">
+<!--<p id="sum"></p>-->
+
+<script>
+  var submit = function () {
+    var one = document.getElementById('one').value;
+    var operate = document.getElementById('operate').value;
+    var two = document.getElementById('two').value;
+    var sum = 0;
+    console.log('one:' + one)
+    console.log('operate:' + operate)
+    console.log('two:' + two)
+    if (operate === '+') {
+      sum = parseInt(one) + parseInt(two);
+    } else if (operate === '-') {
+      sum = parseInt(one) - parseInt(two);
+    } else if (operate === '*') {
+      sum = parseInt(one) * parseInt(two);
+    } else if (operate === '/') {
+      sum = parseInt(one) / parseInt(two);
+    }
+    console.log('sum:' + sum)
+    // document.getElementById('sum').innerText = sum;
+    document.getElementById('sum').value = sum;
+  }
+</script>
+
+</body>
+</html>
