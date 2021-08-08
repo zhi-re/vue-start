@@ -10,7 +10,7 @@
     border: 1px solid black;
   } </style>
 
-  <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+  <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
   <script>
     /**
      * 初始化事件
@@ -63,11 +63,13 @@ mousemove: <span id="testMouseMoveSpan"></span>
   <li class="lang dy"><span>Scheme</span></li>
 </ul>
 
-<input id="test-input" name="email" value=""> <select id="test-select" name="city">
+邮箱：<input id="test-input" name="email" value="1@1.com">
+<select id="test-select" name="city">
   <option value="BJ" selected>Beijing</option>
   <option value="SH">Shanghai</option>
   <option value="SZ">Shenzhen</option>
-</select> <textarea id="test-textarea">Hello</textarea>
+</select>
+<textarea id="test-textarea">Hello</textarea>
 
 <div id="test-div">
   <ul>
@@ -77,8 +79,29 @@ mousemove: <span id="testMouseMoveSpan"></span>
   </ul>
 </div>
 
+<form data-selector="my-se" action="">
+  name:<input type="text" name="name" value="1">
+  age:<input type="text" name="age" value="1">
+  <select name="bir">
+    <option value="999" selected="selected">999</option>
+    <option value="1000">1000</option>
+    <option value="1001">1001</option>
+  </select>
+  <input type="button" onclick="ccc()">
+</form>
+<div id="results"></div>
 </body>
 <script>
+
+  function ccc() {
+    var form = $('[data-selector="my-se"]');
+    console.log("data: " + form.serializeArray())
+    $.each(form, function (i, field) {
+      $("#results").append(field.name + ":" + field.value + " ");
+    });
+  }
+
+
   // 按ID查找如果某个DOM节点有 id 属性，利用jQuery查找如下：
   let a = $('#test-link');
   a.on('click', function () {
@@ -96,6 +119,7 @@ mousemove: <span id="testMouseMoveSpan"></span>
 
   // 按属性查找一个DOM节点除了 id 和 class 外还可以有很多属性，很多时候按属性查找会非常方便，比如在一个表单中按属性来查找：
   var email = $('[name=email]'); // 找出<??? name="email">
+  console.log("email:" + email.val())
   var passwordInput = $('[type=password]'); // 找出<??? type="password">
   var aaa = $('[items="A B"]'); // 找出<??? items="A B">
   // 当属性的值包含空格等特殊字符时，需要用双引号括起来。

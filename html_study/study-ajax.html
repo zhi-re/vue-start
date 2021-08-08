@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<body>
+<form>
+  name:<input id="name" type="text"><br>
+  age:<input id="age" type="text"><br>
+  <input type="button" onclick="signUp()" value="submit">
+</form>
+
+<input type="button" onclick="pc()" value="submit2">
+
+
+<script>
+  function signUp() {
+    params = {'name': $('#name').val(), 'age': $('#age').val()}
+    alert(JSON.stringify(params))
+    $.post({
+      url: "http://localhost:8081/users/ajaxTest",
+      contentType: 'application/json;charset=UTF-8',
+      data: JSON.stringify(params),
+      success: function (data) {
+        console.log(data)
+      }
+    })
+  }
+  function pc(){
+      $.get({
+        url: "",
+        dataType: "jsonp",//传递给请求处理程序，用以获得jsonp回调函数名的参数名(默认为:callback)
+        jsonp: "jsoncallback", //自定义的jsonp回调函数名称，默认为jQuery自动生成的随机函数名
+        jsonpCallback: "success_jsonpCallback",//成功获取跨域服务器上的json数据后,会动态执行这个callback函数
+        success: function (data) {
+          console.log(data)
+        }
+      })
+  }
+
+</script>
+</body>
+</html>

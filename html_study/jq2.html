@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+</head>
+<body>
+
+<form id="searchForm">
+  email:<input type="email" name="email" id="email"/><br>
+  name:<input type="text" name="name" id="name"/><br>
+  birthday:<!--select:下拉列表框--> <!--option：选项-->
+  year:<select name="year" size="year" id="year">
+  <option value="999" selected="selected">999</option>
+  <option value="1000">1000</option>
+  <option value="1001">1001</option>
+</select>
+  <br>
+  <input type="button" name="Button" value="提交" onclick="save()"/>
+</form>
+<script>
+
+  function save() {
+    var name = $('#name');
+    var email = $('#email');
+    var year = $('[name=year]');
+    console.log("name: " + name.val())
+    console.log("email: " + email.val())
+    console.log("year: " + year.val())
+
+    var params = $('#searchForm');
+    console.log("params: " + params.val())
+
+
+  }
+
+</script>
+</body>
+</html>
