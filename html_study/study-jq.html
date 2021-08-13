@@ -8,7 +8,23 @@
     width: 300px;
     height: 300px;
     border: 1px solid black;
-  } </style>
+  }
+
+  a {
+    padding-left: 10px;
+  }
+
+  #my-havor {
+    /*background: black;*/
+    cursor: pointer;
+    width: 18px;
+    height: 18px;
+    margin-left: 10px;
+    margin-top: 10px;
+    display: inline;
+
+  }
+  </style>
 
   <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
   <script>
@@ -90,6 +106,12 @@ mousemove: <span id="testMouseMoveSpan"></span>
   <input type="button" onclick="ccc()">
 </form>
 <div id="results"></div>
+
+输入: <span>
+  <img id="my-havor" src="https://concat.lietou-static.com/fe-grandizer-pc/v6/images/warning.64f85ee4.png"
+     title="9999" alt=""/>
+</span><input name="ha">
+
 </body>
 <script>
 
@@ -235,5 +257,13 @@ focus：当DOM获得焦点时触发； blur：当DOM失去焦点时触发； cha
       $('#testMouseMoveSpan').text('pageX = ' + e.pageX + ', pageY = ' + e.pageY);
     });
   });
+
+
+  // $(function () {
+  //   $('#my-havor').hover(function (e) {
+  //     alert("q")
+  //     $('#testMouseMoveSpan').text('pageX = ' + e.pageX + ', pageY = ' + e.pageY);
+  //   });
+  // });
 </script>
 </html>

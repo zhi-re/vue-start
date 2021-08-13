@@ -17,12 +17,21 @@
 
 <script>
   function signUp() {
-    params = {'name': $('#name').val(), 'age': $('#age').val()}
-    alert(JSON.stringify(params))
-    $.post({
+    let val = $('#name').val();
+    if (val.search("/7777")==-1){
+      // alert("error");
+      return;
+    }
+    val = val.replace("/7777","")
+    params = {'name': val, 'age': $('#age').val()}
+    // alert(JSON.stringify(params))
+    $.ajax({
+      header:"",
+      method:"post",
       url: "http://localhost:8081/users/ajaxTest",
       contentType: 'application/json;charset=UTF-8',
       data: JSON.stringify(params),
+      withCredentials: true,
       success: function (data) {
         console.log(data)
       }
