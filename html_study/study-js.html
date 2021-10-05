@@ -4,6 +4,13 @@
   <meta charset="UTF-8">
   <title>Title</title>
   <script>
+    // number
+    var num1 = 1;
+    let number = Number("-999");
+    console.log(number)
+    console.log(parseInt("-88iji"))
+    console.log(parseFloat("3.14"))
+
     // alert("hello");
     var arr = [1, 2, 3.14, 'Hello', null, true];
     var a = arr[0];
@@ -21,11 +28,30 @@
     var message = `你好, ${name}, 你今年${age}岁了!`;
     // alert(message);
 
+    var filterArr = [10, 20, 30, 40];
+    // filter
+    var filterArraff = filterArr.filter(function (item, index, array) {
+      return item > 20;
+    })
+    console.log("filterArraff:" + filterArraff)
+    // map
+    var filterArrMap = filterArr.map(function (item, index, array) {
+      return item + 20;
+    })
+    console.log("filterArrMap:" + filterArrMap)
+    // foreach
+    filterArr.forEach(function (value, index, array) {
+      console.log(value)
+    })
+
+
     var arr = [10, 20, '30', 'xyz'];
+    console.log(arr.toString())
     arr.indexOf(10); // 元素10的索引为0
     arr.indexOf(20); // 元素20的索引为1
     arr.indexOf(30); // 元素30没有找到，返回-1
     arr.indexOf('30'); // 元素'30'的索引为2
+    let array = new Array();
 
     var arr = ['A', 'B', 'C', 'D', 'E', 'F', 'G'];
     arr.slice(0, 3); // 从索引0开始，到索引3结束，但不包括索引3: ['A', 'B', 'C']
@@ -294,6 +320,13 @@
     var obj = JSON.parse('{"a": "Hello", "b": "World"}'); //结果是 {a: 'Hello', b: 'World'}
     // 现从JavaScript 对象转换为JSON字符串
     var json = JSON.stringify({a: 'Hello', b: 'World'}); //结果是 '{"a": "Hello", "b": "World"}'
+
+    // encodeURI encodeURIComponent
+    var str = 'https://quanbai.com/index.html'
+    console.log(encodeURI(str))
+    console.log(encodeURIComponent(str))
+    var enStr = "https%3A%2F%2Fquanbai.com%2Findex.html";
+    console.log(decodeURIComponent(enStr))
 
 
   </script>

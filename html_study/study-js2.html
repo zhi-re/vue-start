@@ -4,6 +4,49 @@
   <meta charset="UTF-8">
   <title>Title</title>
   <script>
+
+    // open打开窗口
+    // window.open("https://zhire.net","_blank")
+    var isBlock = false;
+    try {
+      let window1 = window.open("https://www.zhire.net/", "myWindow",
+        "height=400, width=400, top=10, left=10, resizable=yes");
+      if (window1 == null) {
+        isBlock = true;
+      }
+      window1.resizeTo(600, 600);
+    } catch (e) {
+      isBlock = true;
+    }
+    if (isBlock) {
+      alert("浏览器禁止弹框")
+    }
+    // window1.close();
+
+    // window.moveTo(0, 0)
+    // window.resizeBy(100, 50)
+
+    // 延时调用
+    var timeOutId = setTimeout(function () {
+      alert("dddd")
+    }, 5000);
+    // clearTime(timeOutId);
+
+    // 重复调用
+    var num = 0;
+    var max = 10;
+    var cfId;
+
+    function cf() {
+      let number = num++;
+      console.log("number " + number)
+      if (number === max) {
+        alert("执行完成")
+        clearInterval(cfId)
+      }
+    }
+    cfId = setInterval(cf, 1000);
+
     console.log(window.innerWidth)
     console.log(window.innerHeight)
 
@@ -110,7 +153,6 @@
   var del = document.getElementById('parent')
   var rem = document.getElementById('rem')
   del.removeChild(rem)
-
 
 
 </SCRIPT>
