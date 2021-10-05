@@ -253,6 +253,36 @@
     now.getMilliseconds(); // 875, 毫秒数
     now.getTime(); // 1435146562875, 以number形式表示的时间戳
 
+    // var ds = "2021-09-01 00:00:00".replace(/-/g, "/");
+    var startTime = Date.parse("2021-01-01");
+    var endTIme = Date.parse("2021-04-20");
+    let date = new Date(startTime);
+    let endTime = new Date(endTIme);
+    console.log("当前月份：" + (date.getMonth() + 1))
+
+    months = (endTime.getFullYear() - date.getFullYear()) * 12 + ((endTime.getMonth() + 1) - (date.getMonth() + 1)) + 1;
+
+    console.log("相差的月份 " + months);
+    if (endTime < startTime) {
+      console.log("xixooxoxoxo")
+    }
+    console.log(date)
+    console.log(date.getMonth() + 1)
+    console.log(endTime.getMonth() + 1)
+    let sta = date.getMonth() + 1
+    let end = endTime.getMonth() + 1
+    if (sta === 12) {
+      if (sta >= 3) {
+        console.log("error")
+      }
+    }
+    if (end - sta > 3) {
+      console.log("dale")
+    }
+
+    var dayNum = (endTIme - startTime) / (1000 * 3600 * 24);
+    var days = parseInt(Math.ceil(dayNum));
+    console.log("dayNUm:" + days)
 
     var d = new Date(1435146562875);
     d.toLocaleString(); // '2015/6/24 下午7:49:22'，本地时间（北京时区+8:00），显示的字 符串与操作系统设定的格式有关

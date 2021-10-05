@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+</head>
+<body>
+<form>
+  name:<input id="name" type="text"><br>
+  age:<input id="age" type="text"><br>
+  <button type="button" class="btn" onclick="signUp()" id="output">导出</button>
+</form>
+</body>
+<script>
+  function signUp() {
+    let val = $('#name').val();
+    console.log(val)
+    params = {'name': val, 'age': $('#age').val()}
+    $('#output').attr("disabled", "true").text("正在导出中，请耐心等待"); //设置变灰按钮
+    $.ajax({
+      method: "POST",
+      url: "http://127.0.0.1:8081/users/outPutUsers2",
+      data: params,
+      success: function (data) {
+        let code = data.code;
+        let message = data.message;
+        console.log(code)
+        console.log(message)
+        document.getElementById('output').disabled = false; // 取消置灰
+        $('#output').text("导出")
+      }
+    })
+  }
+</script>
+</html>

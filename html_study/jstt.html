@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script>
+    <!--
+    /**
+     * 问题 1
+     * 将一个json数据的所有key从下划线改为驼峰
+     *
+     * @param {object | array} value 待处理对象或数组
+     * @returns {object | array} 处理后的对象或数组
+     */ -->
+    const testData = {
+      a_bbb: 123,
+      a_g: [1, 2, 3, 4],
+      a_d: {
+        s: 2,
+        s_d: 3
+      },
+      a_f: [1, 2, 3, {
+        a_g: 5
+      }],
+      a_d_s: 1
+    }
+
+    mapKeysToCamelCase(testData);
+
+    function mapKeysToCamelCase(data) {
+      var result = {};
+      for (let jsonKey in data) {
+        // if (jsonKey.indexOf('_') !== -1) {
+        // key转数组
+        let strings = jsonKey.split('');
+        console.log(strings)
+        var newArray = [];
+        for (let i = 0; i < strings.length; i++) {
+          if (strings[i] === '_') {
+            newArray.push(i);
+          }
+        }
+        console.log(newArray)
+
+        // console.log('index ' + i)
+        // let keyLow = strings[i + 1];
+        // let keyUp = keyLow.toUpperCase()
+        // console.log("keyLow " + keyLow)
+        // console.log("keyUp " + keyUp)
+        // let s2 = jsonKey.replace(keyLow, keyUp);
+        // console.log("s2 " + s2)
+
+
+        let number = jsonKey.indexOf('_');
+
+        // jsonKey.replace()
+
+        let s1 = jsonKey.charAt(jsonKey.indexOf("_") + 1);
+        // console.log(s1);
+
+        let s = jsonKey.replaceAll('_', '');
+        // console.log('sssss ' + s)
+
+
+        // }
+
+
+        // console.log(jsonKey)
+        // console.log(data[jsonKey])
+      }
+
+
+    }
+
+
+  </script>
+</head>
+<body>
+
+</body>
+</html>

@@ -9,7 +9,9 @@
 <form>
   name:<input id="name" type="text"><br>
   age:<input id="age" type="text"><br>
-  <input type="button" onclick="signUp()" value="submit">
+  <!--  <input type="button" onclick="signUp()" value="submit">-->
+  <button type="button" class="btn" onclick="signUp()">导出面试视频</button>
+
 </form>
 
 <input type="button" onclick="pc()" value="submit2">
@@ -18,35 +20,51 @@
 <script>
   function signUp() {
     let val = $('#name').val();
-    if (val.search("/7777")==-1){
-      // alert("error");
+    console.log(val)
+    // if (val.search("/7777")==-1){
+    //   // alert("error");
+    //   return;
+    // }
+    // val = val.replace("/7777","")
+    if (val === '') {
+      alert("name不能为空")
       return;
     }
-    val = val.replace("/7777","")
     params = {'name': val, 'age': $('#age').val()}
     // alert(JSON.stringify(params))
     $.ajax({
-      header:"",
-      method:"post",
-      url: "http://localhost:8081/users/ajaxTest",
-      contentType: 'application/json;charset=UTF-8',
-      data: JSON.stringify(params),
-      withCredentials: true,
+      // header:"",
+      method: "get",
+      url: "http://127.0.0.1:8081/users/outPutUsers",
+      // contentType: 'application/json;charset=UTF-8',
+      data: params,
+      // withCredentials: true,
+      success: function (data) {
+        let code = data.code;
+        let message = data.message;
+        alert(code);
+        alert(message);
+        window.location.href = message;
+        $.dialog({
+          title: '导入结果',
+          modal: true,
+          content: "<div id='fail-root'> <h4><i class='text-icon icon-close'></i>处理完成，点击下载</h4> " +
+            "<a href=" + message + " class='btn btn-orange btn-small'>download</a></div>",
+        });
+      }
+    })
+  }
+
+  function pc() {
+    $.get({
+      url: "",
+      dataType: "jsonp",//传递给请求处理程序，用以获得jsonp回调函数名的参数名(默认为:callback)
+      jsonp: "jsoncallback", //自定义的jsonp回调函数名称，默认为jQuery自动生成的随机函数名
+      jsonpCallback: "success_jsonpCallback",//成功获取跨域服务器上的json数据后,会动态执行这个callback函数
       success: function (data) {
         console.log(data)
       }
     })
-  }
-  function pc(){
-      $.get({
-        url: "",
-        dataType: "jsonp",//传递给请求处理程序，用以获得jsonp回调函数名的参数名(默认为:callback)
-        jsonp: "jsoncallback", //自定义的jsonp回调函数名称，默认为jQuery自动生成的随机函数名
-        jsonpCallback: "success_jsonpCallback",//成功获取跨域服务器上的json数据后,会动态执行这个callback函数
-        success: function (data) {
-          console.log(data)
-        }
-      })
   }
 
 </script>
